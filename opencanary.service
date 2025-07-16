@@ -1,0 +1,16 @@
+Description=OpenCanary honeypot
+After=syslog.target
+After=network.target
+
+[Service]
+User=qweqweqwe
+Restart=no
+Type=oneshot
+RemainAfterExit=yes
+Environment=VIRTUAL_ENV=/home/qweqweqwe/.venv
+Environment=PATH=/home/qweqweqwe/.python_env/bin:/usr/bin:/home/qweqweqwe/.python_env/bin:/home/qweqweqwe/.local/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/qweqweqwe/.dotnet/tools
+WorkingDirectory=/home/qweqweqwe/.venv
+ExecStart=/home/qweqweqwe/.venv/bin/opencanaryd --start
+
+[Install]
+WantedBy=multi-user.target
